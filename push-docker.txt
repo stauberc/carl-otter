@@ -1,0 +1,14 @@
+docker buildx build --tag stuaberc/black-jack:latest -f Dockerfile .
+docker push stauberc/black-jack:latest
+docker stop $(docker ps -q)
+docker rm $(docker ps -a -q)
+docker pull stauberc/black-jack:latest
+docker-compose -f docker-compose.prod.yml up -d
+scp docker-compose.prod.yml carlotta@carl-otter.lol:
+
+docker build -t black-jack:latest --target runner .
+docker push stauberc/black-jack:latest
+docker images
+docker ps
+
+docker-compose -f ~/docker-compose.prod.yml up -d --remove-orphans

@@ -17,7 +17,7 @@ function ElegantShape({
   width = 400,
   height = 100,
   rotate = 0,
-  gradient = "from-white/[0.08]",
+  gradient = "from-white/[0.12]",
 }: {
   className?: string
   delay?: number
@@ -27,17 +27,31 @@ function ElegantShape({
   gradient?: string
 }) {
   return (
-    <motion.div initial={{ opacity: 0, y: -150,rotate: rotate - 15,}} animate={{ opacity: 1, y: 0, rotate: rotate,}} transition={{ duration: 2.4,delay, ease: [0.23, 0.86, 0.39, 0.96], opacity: { duration: 1.2 }, }} className={cn("absolute", className)} >
+    <motion.div initial={{ opacity: 0, y: -150,rotate: rotate - 15,}} animate={{ opacity: 1, y: 0, rotate: rotate,}} transition={{ duration: 2.4,delay, ease: [0.23, 0.86, 0.39, 0.96], opacity: { duration: 0.55 }, }} className={cn("absolute", className)} >
       <motion.div animate={{ y: [0, 15, 0], }} transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", }} style={{ width, height, }} className="relative" >
-        <div
+        <motion.div
+          initial={{ filter: "brightness(2.6) saturate(1.35)" }}
+          animate={{
+            filter: [
+              "brightness(2.6) saturate(1.35)",
+              "brightness(2.1) saturate(1.25)",
+              "brightness(0.7) saturate(0.95)",
+            ],
+          }}
+          transition={{
+            duration: 0.5,
+            delay,
+            times: [0, 0.25, 1],
+            ease: "easeOut",
+          }}
           className={cn(
-            "absolute inset-0 rounded-full",
+            "absolute inset-0 rounded-full will-change-[filter]",
             "bg-gradient-to-r to-transparent",
             gradient,
-            "backdrop-blur-[2px] border-2 border-white/[0.15]",
-            "shadow-[0_8px_32px_0_rgba(255,255,255,0.1)]",
+            "backdrop-blur-[2px] border-2 border-white/[0.32]",
+            "shadow-[0_12px_48px_0_rgba(255,255,255,0.22),0_0_60px_-10px_rgba(255,255,255,0.15)]",
             "after:absolute after:inset-0 after:rounded-full",
-            "after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_70%)]",
+            "after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.45),transparent_65%)]",
           )}
         />
       </motion.div>
@@ -60,11 +74,11 @@ export default function Hero({ badge = "Webentwicklerin", title1 = "Curious like
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl" />
 
       <div className="absolute inset-0 overflow-hidden">
-        <ElegantShape  delay={0.3} width={600} height={140} rotate={12} gradient="from-indigo-500/[0.15]" className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]" />
-        <ElegantShape delay={0.5} width={500} height={120} rotate={-15} gradient="from-rose-500/[0.15]" className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]" />
-        <ElegantShape delay={0.4} width={300} height={80} rotate={-8} gradient="from-violet-500/[0.15]" className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]" />
-        <ElegantShape delay={0.6} width={200} height={60} rotate={20} gradient="from-amber-500/[0.15]" className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]" />
-        <ElegantShape delay={0.7} width={150} height={40} rotate={-25} gradient="from-cyan-500/[0.15]" className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]" />
+        <ElegantShape  delay={0.3} width={600} height={140} rotate={12} gradient="from-indigo-500/[0.38]" className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]" />
+        <ElegantShape delay={0.5} width={500} height={120} rotate={-15} gradient="from-rose-500/[0.36]" className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]" />
+        <ElegantShape delay={0.4} width={300} height={80} rotate={-8} gradient="from-violet-500/[0.36]" className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]" />
+        <ElegantShape delay={0.6} width={200} height={60} rotate={20} gradient="from-amber-500/[0.34]" className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]" />
+        <ElegantShape delay={0.7} width={150} height={40} rotate={-25} gradient="from-cyan-500/[0.35]" className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]" />
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16">
@@ -72,7 +86,7 @@ export default function Hero({ badge = "Webentwicklerin", title1 = "Curious like
           <div className="text-center lg:text-left">
           <motion.div variants={fadeOnly} initial="hidden" animate="visible" transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] mb-6" >
             <div className="w-3 h-3 bg-gradient-to-r from-indigo-400 to-rose-400 rounded-full" />
-            <span className="text-xs text-white/60 tracking-wide">{badge}</span>
+            <span className="text-s text-white/60 tracking-wide">{badge}</span>
           </motion.div>
 
           <motion.div className="w-full">

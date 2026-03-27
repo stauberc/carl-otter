@@ -32,7 +32,7 @@ const projects = [
     description:
       "Eine moderne, responsive Portfolio-Website zur Präsentation meiner Projekte, Skills und Designfähigkeiten.",
     highlights: ["Uebersichtliches UI", "Responsive Design", "Animationen mit Framer Motion"],
-    image: "/images/projects/portfolio.png",
+    image: "/images/projects/Portfolio.png",
     technologies: ["Next.js", "Tailwind CSS", "Framer Motion"],
   },
   {
@@ -54,20 +54,10 @@ export default function Projects() {
             Portfolio Showcase
           </h2>
           <p className="text-white/55 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
-            Fünf ausgewählte Projekte mit Fokus auf Webentwicklung, Usability und moderne Technologien.
+            Ein Ausschnitt von vier ausgewählte Projekte mit Fokus auf Webentwicklung, Usability und moderne Technologien.
           </p>
-          <a
-            href="/docs/portfolio-carlotta-stauber.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-5 px-5 py-2.5 rounded-full border border-white/20 text-white text-sm hover:bg-white/10 transition-colors"
-          >
-            Gesamtes Portfolio ansehen (PDF)
-            <ExternalLink size={14} />
-          </a>
         </motion.div>
         <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} viewport={{ once: true }} >
-          <h3 className="text-sm sm:text-base lg:text-lg font-bold mb-6 text-white text-center">Projekte</h3>
           <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
             {projects.map((project, index) => (
               <motion.div key={project.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: index * 0.1 }} viewport={{ once: true }} whileHover={{ y: -3 }} className="group bg-white/[0.04] border border-white/10 rounded-xl p-4 sm:p-5 hover:bg-white/[0.07] transition-all duration-300" >
@@ -118,6 +108,20 @@ export default function Projects() {
               </motion.div>
             ))}
           </div>
+        </motion.div>
+
+
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} viewport={{ once: true }} className="text-center mb-8" >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl mt-10 font-bold bg-gradient-to-r from-white to-indigo-200 bg-clip-text text-transparent">
+            Weitere Projekte
+          </h2>
+          <p className="text-white/55 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
+            In dem PDF-Portfolio werden nicht nur meine Webproduktionen gezeigt, sondern auch noch andere Projekte, die ich in meiner Ausbildung umgesetzt habe...
+          </p>
+          <a href="/docs/portfolio-carlotta-stauber.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-5 px-5 py-2.5 rounded-full border border-white/20 text-white text-sm hover:bg-white/10 transition-colors" >
+            Gesamtes Portfolio ansehen (PDF)
+            <ExternalLink size={14} />
+          </a>
         </motion.div>
       </div>
     </section>

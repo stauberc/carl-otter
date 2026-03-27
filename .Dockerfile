@@ -1,7 +1,7 @@
 # ENTRYPOINT ["./docker-start.sh"]
 # # ENTRYPOINT ["sleep", "infinity"]
 
-FROM oven/bun:1.3.6-debian AS deps
+FROM oven/bun:1.3.6 AS deps
 
 WORKDIR /app
 
@@ -13,15 +13,12 @@ COPY package.json bun.lock ./
 # Install all dependencies including devDependencies
 RUN bun install --frozen-lockfile
 
-FROM oven/bun:1.3.6-debian AS builder
+FROM oven/bun:1.3.6 AS builder
 
 WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
-# Generate Prisma Client
-RUN bun x prisma generate
 
 # Build Next.js standalone output
 RUN bun run build
@@ -37,18 +34,14 @@ ENV HOSTNAME=0.0.0.0
 RUN apt-get update && apt-get install -y --no-install-recommends wget \
     && rm -rf /var/lib/apt/lists/*
 
-# only copy runtime files
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
+# Runtime files for `next start` (no standalone output required)
+COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
-
-# Prisma schema + engines
-COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
-COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/node_modules ./node_modules
 
 EXPOSE 3000
 
-HEALTHCHECK CMD wget -no-verbose --tries=1 --spider http://localhost:3000/ || exit 1
+HEALTHCHECK CMD wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1
 
-CMD ["bun", "server.js"]
+CMD ["bun", "run", "start"]
