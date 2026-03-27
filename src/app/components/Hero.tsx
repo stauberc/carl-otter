@@ -60,6 +60,14 @@ function ElegantShape({
 }
 
 export default function Hero({ badge = "Webentwicklerin", title1 = "Curious like an Otter.", title2 = " Building in Code." }: { badge?: string, title1?: string, title2?: string }) {
+  const typedLines = [
+    { text: "Hallo, ich bin Carlotta,", color: "text-indigo-300" },
+    { text: "aka. Carl the Otter. Ich baue gerne ", color: "text-violet-300" },
+    { text: "Dinge fürs Web experimentiere mit Design", color: "text-cyan-300" },
+    { text: "und arbeite an eigenen Projekten.", color: "text-rose-300" },
+  ]
+  const typingStart = 1.6
+  const charDelay = 0.045
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
@@ -74,11 +82,11 @@ export default function Hero({ badge = "Webentwicklerin", title1 = "Curious like
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl" />
 
       <div className="absolute inset-0 overflow-hidden">
-        <ElegantShape  delay={0.3} width={600} height={140} rotate={12} gradient="from-indigo-500/[0.38]" className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]" />
-        <ElegantShape delay={0.5} width={500} height={120} rotate={-15} gradient="from-rose-500/[0.36]" className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]" />
-        <ElegantShape delay={0.4} width={300} height={80} rotate={-8} gradient="from-violet-500/[0.36]" className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]" />
-        <ElegantShape delay={0.6} width={200} height={60} rotate={20} gradient="from-amber-500/[0.34]" className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]" />
-        <ElegantShape delay={0.7} width={150} height={40} rotate={-25} gradient="from-cyan-500/[0.35]" className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]" />
+        <ElegantShape delay={0.3} width={560} height={128} rotate={12} gradient="from-indigo-500/[0.38]" className="left-[-38%] sm:left-[-20%] md:left-[-6%] top-[12%] sm:top-[16%] md:top-[20%] scale-75 sm:scale-90 md:scale-100" />
+        <ElegantShape delay={0.5} width={460} height={112} rotate={-15} gradient="from-rose-500/[0.36]" className="right-[-34%] sm:right-[-16%] md:right-[0%] top-[66%] sm:top-[70%] md:top-[75%] scale-75 sm:scale-90 md:scale-100" />
+        <ElegantShape delay={0.4} width={280} height={76} rotate={-8} gradient="from-violet-500/[0.36]" className="left-[-8%] sm:left-[2%] md:left-[10%] bottom-[3%] sm:bottom-[6%] md:bottom-[10%] scale-90 sm:scale-95 md:scale-100" />
+        <ElegantShape delay={0.6} width={200} height={60} rotate={20} gradient="from-amber-500/[0.34]" className="hidden sm:block right-[10%] md:right-[20%] top-[10%] md:top-[15%]" />
+        <ElegantShape delay={0.7} width={150} height={40} rotate={-25} gradient="from-cyan-500/[0.35]" className="hidden sm:block left-[16%] md:left-[25%] top-[6%] md:top-[10%]" />
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16">
@@ -134,11 +142,30 @@ export default function Hero({ badge = "Webentwicklerin", title1 = "Curious like
                     <Code2 size={16} />
                     <span className="text-xs">hero.tsx</span>
                   </div>
-                  <div className="space-y-2">
-                    <div className="h-2 rounded bg-indigo-400/30 w-11/12" />
-                    <div className="h-2 rounded bg-violet-400/30 w-9/12" />
-                    <div className="h-2 rounded bg-cyan-400/30 w-10/12" />
-                    <div className="h-2 rounded bg-rose-400/30 w-7/12" />
+                  <div className="space-y-2.5">
+                    {typedLines.map((line, lineIndex) => {
+                      const lineBaseDelay = typedLines
+                        .slice(0, lineIndex)
+                        .reduce((sum, currentLine) => sum + currentLine.text.length, 0)
+                      return (
+                        <p key={line.text} className={cn("text-xs sm:text-sm leading-tight min-h-4", line.color)}>
+                          {line.text.split("").map((char, charIndex) => (
+                            <motion.span
+                              key={`${line.text}-${charIndex}`}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{
+                                delay: typingStart + (lineBaseDelay + charIndex) * charDelay,
+                                duration: 0.02,
+                              }}
+                              className="inline-block whitespace-pre"
+                            >
+                              {char}
+                            </motion.span>
+                          ))}
+                        </p>
+                      )
+                    })}
                   </div>
                 </div>
 

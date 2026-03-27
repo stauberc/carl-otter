@@ -83,7 +83,7 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
                 </div>
 
-                <h4 className="text-sm font-semibold text-white mb-2">{project.title}</h4>
+                <h3 className="text-sm font-semibold text-white mb-2">{project.title}</h3>
                 <p className="text-white/60 text-xs mb-3">{project.description}</p>
 
                 <div className="mb-3">

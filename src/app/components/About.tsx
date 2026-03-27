@@ -45,7 +45,7 @@ export default function About() {
               und dabei praktische Erfahrungen in verschiedenen Projekten gesammelt.
             </p>
             <p className="text-white/65 leading-relaxed text-sm sm:text-base mb-7">
-              Ich arbeite strukturiert und selbststaendig, lege Wert auf saubere und nachvollziehbare Loesungen
+              Ich arbeite strukturiert und selbstständig, lege Wert auf saubere und nachvollziehbare Lösungen
               und entwickle meine Faehigkeiten laufend weiter.
             </p>
           </motion.div>

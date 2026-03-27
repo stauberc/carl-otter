@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Mail, MapPin, Send, Github, Instagram } from "lucide-react"
+import { Mail, MapPin, Github, Instagram } from "lucide-react"
 import { useState } from "react"
 
 const contactInfo = [
@@ -59,7 +59,15 @@ export default function Contact() {
             <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-4">Kontaktinformationen</h3>
             <div className="flex flex-col gap-4 mb-6">
               {contactInfo.map((info, index) => (
-                <motion.a key={info.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }} viewport={{ once: true }} whileHover={{ y: -2 }} className="flex flex-col items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all duration-300 w-full text-center" >
+                <motion.a
+                  key={info.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -2 }}
+                  className="flex flex-col items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all duration-300 w-full text-center"
+                >
                   <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-indigo-500 to-rose-500 rounded-lg flex items-center justify-center flex-shrink-0">
                     <info.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </div>
@@ -75,8 +83,20 @@ export default function Contact() {
               <h4 className="text-xs sm:text-sm font-semibold text-white mb-3">Folge mir</h4>
               <div className="flex flex-row items-center justify-center gap-3">
                 {socialLinks.map((social, index) => (
-                  <motion.a key={social.label} href={social.href} initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }} viewport={{ once: true }} whileHover={{ scale: 1.1, y: -2 }} className="w-8 h-8 sm:w-10 sm:h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center hover:bg-white/10 transition-all duration-300" >
-                    <social.icon className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    className="w-8 h-8 sm:w-10 sm:h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center hover:bg-white/10 transition-all duration-300"
+                  >
+                    <social.icon className="w-3 h-3 sm:w-4 sm:h-4 text-white" aria-hidden />
                   </motion.a>
                 ))}
               </div>

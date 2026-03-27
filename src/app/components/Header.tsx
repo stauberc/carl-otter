@@ -23,9 +23,15 @@ export default function Header() {
     >
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 md:h-16">
-          <motion.div whileHover={{ scale: 1.05 }} className="text-sm md:text-base font-bold bg-gradient-to-r from-indigo-400 to-rose-400 bg-clip-text text-transparent">
-            Portfolio
-          </motion.div>
+          <motion.a
+            href="/"
+            whileHover={{ y: -2 }}
+            className="group text-sm md:text-base font-bold"
+          >
+            <span className="text-white/70 transition-all duration-300 bg-clip-text bg-gradient-to-r from-indigo-300 via-violet-200 to-rose-300 bg-[length:200%_100%] bg-[position:0%_0%] group-hover:bg-[position:100%_0%] group-hover:text-transparent group-hover:drop-shadow-[0_0_10px_rgba(139,92,246,0.75)]">
+              Portfolio
+            </span>
+          </motion.a>
 
           <nav className="hidden lg:flex items-center space-x-5">
             {navItems.map((item, index) => (
@@ -45,13 +51,20 @@ export default function Header() {
             ))}
           </nav>
 
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg">
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg"
+            aria-label={isMenuOpen ? "Navigation schließen" : "Navigation öffnen"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-nav"
+          >
+            {isMenuOpen ? <X size={20} aria-hidden /> : <Menu size={20} aria-hidden />}
           </button>
         </div>
 
         {isMenuOpen && (
-          <motion.nav initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="lg:hidden border-t border-white/10">
+          <motion.nav id="mobile-nav" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="lg:hidden border-t border-white/10">
             <div className="py-2">
               {navItems.map((item, index) => (
                 <motion.a
