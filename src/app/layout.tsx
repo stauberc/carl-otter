@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Pacifico } from "next/font/google";
-import Script from "next/script";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
-import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+
 
 const pacifico = Pacifico({
   subsets: ["latin"],
@@ -27,18 +26,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-TYQBRHT4KR"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-TYQBRHT4KR');
-          `}
-        </Script>
       </body>
     </html>
   );

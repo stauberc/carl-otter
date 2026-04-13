@@ -41,7 +41,7 @@ export default function About() {
             </h3>
             <p className="text-white/70 leading-relaxed text-sm sm:text-base mb-4">
               Ich besuche aktuell die HTL Villach mit dem Schwerpunkt Webdevelopment.
-              Im Laufe meiner Ausbildung habe ich mich intensiv mit Webentwicklung und Design beschaeftigt
+              Im Laufe meiner Ausbildung habe ich mich intensiv mit Webentwicklung und Design beschäftigt
               und dabei praktische Erfahrungen in verschiedenen Projekten gesammelt.
             </p>
             <p className="text-white/65 leading-relaxed text-sm sm:text-base mb-7">
