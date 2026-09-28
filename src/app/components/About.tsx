@@ -3,27 +3,6 @@ import { motion } from "framer-motion"
 import { Award, BriefcaseBusiness, Clock3 } from "lucide-react"
 import Image from "next/image"
 
-const stats = [
-  {
-    icon: BriefcaseBusiness,
-    value: "12+",
-    label: "Projekte umgesetzt",
-    subtitle: "Web und Design in der Praxis",
-  },
-  {
-    icon: Award,
-    value: "9+",
-    label: "Technologien im Einsatz",
-    subtitle: "Von React bis Datenbanken",
-  },
-  {
-    icon: Clock3,
-    value: "5",
-    label: "Jahre Ausbildung",
-    subtitle: "Fokus auf Webdevelopment",
-  },
-]
-
 export default function About() {
   return (
     <section id="about" className="py-20 sm:py-24 lg:py-28 xl:py-32 bg-gradient-to-b from-[#030303] to-[#0a0a0a]">
@@ -40,13 +19,15 @@ export default function About() {
               Hallo, ich bin <span className="text-indigo-300">Carlotta Stauber</span>
             </h3>
             <p className="text-white/70 leading-relaxed text-sm sm:text-base mb-4">
-              Ich besuche aktuell die HTL Villach mit dem Schwerpunkt Webdevelopment.
-              Im Laufe meiner Ausbildung habe ich mich intensiv mit Webentwicklung und Design beschäftigt
-              und dabei praktische Erfahrungen in verschiedenen Projekten gesammelt.
+            Seit diesem Jahr studiere ich Angewandte Informatik an der Universität Klagenfurt.
+  Zuvor habe ich 2026 die HTL Villach im Bereich Medientechnik mit dem Schwerpunkt
+  Web- &amp; Appdevelopment mit der Matura abgeschlossen. Während meiner Ausbildung habe ich
+  mich intensiv mit Webentwicklung und Design beschäftigt und dabei praktische Erfahrungen
+  in verschiedenen Projekten gesammelt.
             </p>
             <p className="text-white/65 leading-relaxed text-sm sm:text-base mb-7">
               Ich arbeite strukturiert und selbstständig, lege Wert auf saubere und nachvollziehbare Lösungen
-              und entwickle meine Faehigkeiten laufend weiter.
+              und entwickle meine Fähigkeiten laufend weiter.
             </p>
           </motion.div>
 
@@ -59,20 +40,6 @@ export default function About() {
             </div>
           </motion.div>
         </div>
-
-        <div className="grid md:grid-cols-3 gap-4">
-          {stats.map((item, index) => (
-            <motion.div key={item.label} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.25 + index * 0.08 }} viewport={{ once: true }} className="rounded-xl border border-white/10 bg-white/[0.04] p-5" >
-              <div className="flex items-center justify-between mb-3">
-                <item.icon className="w-4 h-4 text-indigo-300" />
-                <span className="text-xl font-bold text-white">{item.value}</span>
-              </div>
-              <p className="text-white text-sm font-semibold mb-1">{item.label}</p>
-              <p className="text-white/55 text-xs">{item.subtitle}</p>
-            </motion.div>
-          ))}
-        </div>
-
       </div>
     </section>
   )

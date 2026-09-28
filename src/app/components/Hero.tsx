@@ -98,12 +98,12 @@ export default function Hero({ badge = "Webentwicklerin", title1 = "Curious like
           </motion.div>
 
           <motion.div className="w-full">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-5xl font-bold mb-6 tracking-tight leading-tight">
-              <motion.span variants={fadeOnly} initial="hidden" animate="visible" transition={{ duration: 0.9, delay: 0.45, ease: "easeOut" }} className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80 inline-block" >
+            <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-5xl font-bold mb-6 tracking-tight">
+              <motion.span variants={fadeOnly} initial="hidden" animate="visible" transition={{ duration: 0.9, delay: 0.45, ease: "easeOut" }} className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80 inline-block leading-tight" >
                 {title1}
               </motion.span>
               <br />
-              <motion.span variants={fadeOnly} initial="hidden" animate="visible" transition={{ duration: 0.9, delay: 0.7, ease: "easeOut" }} className={cn( "bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white/90 to-rose-300 inline-block",  pacifico.className, )} >
+              <motion.span variants={fadeOnly} initial="hidden" animate="visible" transition={{ duration: 0.9, delay: 0.7, ease: "easeOut" }} className={cn( "bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white/90 to-rose-300 inline-block overflow-visible pb-2 pt-1 leading-[1.4]",  pacifico.className, )} >
                 {title2}
               </motion.span>
             </h1>
