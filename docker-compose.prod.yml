@@ -19,14 +19,14 @@ services:
       - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
       - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
-      - "--certificatesresolvers.myresolver.acme.email=july@july-handle.com"
+      - "--certificatesresolvers.myresolver.acme.email=carlotta@carl-otter.lol"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /home/july/letsencrypt:/letsencrypt
+      - /home/carlotta/letsencrypt:/letsencrypt
     networks:
       - blackjack
 
@@ -34,7 +34,7 @@ services:
     image: stauberc/black-jack:latest
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.blackjack.rule=Host(`july-handle.com`)"
+      - "traefik.http.routers.blackjack.rule=Host(`carl-otter.lol`)"
       - "traefik.http.routers.blackjack.entrypoints=websecure"
       - "traefik.http.routers.blackjack.tls=true"
       - "traefik.http.services.blackjack.loadbalancer.server.port=3000"

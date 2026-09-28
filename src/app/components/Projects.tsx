@@ -8,7 +8,7 @@ const projects = [
   {
     title: "Customer Service Portal (Diplomarbeit)",
     description:
-      "Im Rahmen meiner Diplomarbeit entwickelte ich die User-View eines webbasierten Customer Portals fuer die Firma Heldenglanz.",
+      "Im Rahmen meiner Diplomarbeit entwickelte ich die User-View eines webbasierten Customer Portals für die Firma Heldenglanz.",
     highlights: [
       "Passwortloser Login über Magic Link",
       "Verwaltung von Services, Rechnungen und Verträgen",
@@ -31,7 +31,7 @@ const projects = [
     title: "Portfolio Website",
     description:
       "Eine moderne, responsive Portfolio-Website zur Präsentation meiner Projekte, Skills und Designfähigkeiten.",
-    highlights: ["Uebersichtliches UI", "Responsive Design", "Animationen mit Framer Motion"],
+    highlights: ["Übersichtliches UI", "Responsive Design", "Animationen mit Framer Motion"],
     image: "/images/projects/Portfolio.png",
     technologies: ["Next.js", "Tailwind CSS", "Framer Motion"],
   },
