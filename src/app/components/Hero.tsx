@@ -90,11 +90,11 @@ export default function Hero({ badge = "Webentwicklerin", title1 = "Curious like
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center min-h-screen py-12">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start lg:items-center min-h-screen pt-24 sm:pt-28 pb-16 lg:py-20">
           <div className="text-center lg:text-left">
-          <motion.div variants={fadeOnly} initial="hidden" animate="visible" transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] mb-6" >
-            <div className="w-3 h-3 bg-gradient-to-r from-indigo-400 to-rose-400 rounded-full" />
-            <span className="text-s text-white/60 tracking-wide">{badge}</span>
+          <motion.div variants={fadeOnly} initial="hidden" animate="visible" transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] mb-6" >
+            <div className="w-3 h-3 shrink-0 bg-gradient-to-r from-indigo-400 to-rose-400 rounded-full" />
+            <span className="text-sm text-white/60 tracking-wide">{badge}</span>
           </motion.div>
 
           <motion.div className="w-full">
